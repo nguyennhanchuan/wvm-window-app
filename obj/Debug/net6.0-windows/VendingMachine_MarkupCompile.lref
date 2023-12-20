@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+﻿E:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\App.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Control\CartItem.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Control\Product.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Control\ProductType.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Converters\Converters.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Templates\AddResourceViewModelTemplate.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Templates\DiagnosticsViewModelTemplate.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Templates\ExceptionViewModelTemplate.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Templates\MainViewModelTemplate.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Templates\ModifyResourceViewModelTemplate.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Resources\Views\MainWindow.xaml;;
+FE:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\Views\MainWindow.xaml;;
+=======
+﻿
+FD:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\App.xaml;;
+FD:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\MainWindow.xaml;;
+FD:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\View\CartItem.xaml;;
+FD:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\View\Product.xaml;;
+FD:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\View\ProductType.xaml;;
+>>>>>>> origin/main
+

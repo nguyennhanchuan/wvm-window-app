@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.FailAlert"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+                Height="1040" Width="1080"
+             x:Name="ucFailAlert">
+
+    <Border Background="#00FFFFFF"  
+                Canvas.Left="0"
+                Canvas.Top="0"
+                Height="1040" Width="1080">
+
+        <Border Height="500" Width="500">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="Padding" Value="20"/>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="0.2" Color="#DB3838" />
+                                    <GradientStop Offset="0.9" Color="#DB4F4F" />
+                                    <GradientStop Offset="1" Color="#DB6B6B" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Style>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.3*"/>
+
+                </Grid.RowDefinitions>
+
+                <!--<Icon:PackIconMaterial Kind="Close" Width="30" Height="30" Foreground="White" HorizontalAlignment="Right"/>-->
+                <Border>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="CornerRadius" Value="75"/>
+                            <Setter Property="Width" Value="150"/>
+                            <Setter Property="Height" Value="150"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </Border.Style>
+                    <Image Source="\Assets\Images\FailIcon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100"/>
+                </Border>
+
+                <TextBlock Grid.Row="1" Text="Thanh toán thất bại" FontSize="28" FontWeight="Bold" Foreground='White' HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+                <Button Grid.Row="2" x:Name="ConfirmPayment" Foreground="#FFFFFF" Background="Transparent"
+                                    Command="{Binding RePaymentCommand}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ConfirmPaymentBorder">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="15"/>
+                                        <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Width" Value="245"/>
+                                        <Setter Property="Height" Value="60"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                        <Setter Property="Margin" Value="10,5,10,5"/>
+                                    </Style>
+                                </Border.Style>
+
+                                <TextBlock Text="{Binding RePaymentLeft, StringFormat='Thanh toán lại (\{0\})'}" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter TargetName="ConfirmPaymentBorder" Property="Background" Value="{StaticResource ActiveColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+        </Border>
+    </Border>
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.PaymentMethodItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="150" Width="120"
+             x:Name="ucPaymentMethod">
+
+    <Label x:Name="PaymentMethodButton">
+        <Label.Template>
+            <ControlTemplate TargetType="Label">
+                <Grid Width="100" Height="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="PaymentMethodItemBorder" VerticalAlignment="Top" Grid.Row="0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource MainColor}"/>
+                                <Setter Property="CornerRadius" Value="25"/>
+                                <Setter Property="Width" Value="90"/>
+                                <Setter Property="Height" Value="90"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Style>
+                        </Border.Style>
+
+                        <Image Source="{Binding ElementName=ucPaymentMethod, Path=Image}" Width="70" Height="70"  Grid.Row="0"/>
+                    </Border>
+
+                    <TextBlock Name="MethodText" Text="{Binding ElementName=ucPaymentMethod, Path=DisplayName}" Width="90" Height="25" Margin="0,5,0,0" Grid.Row="1" TextAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                </Grid>
+
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter TargetName="PaymentMethodItemBorder" Property="Background" Value="#22AA98"/>
+                    </Trigger>
+                    <DataTrigger Binding="{Binding ElementName=ucPaymentMethod, Path=IsActive}" Value="True">
+                        <Setter TargetName="PaymentMethodItemBorder" Property="Background" Value="{StaticResource MainColor}" />
+                    </DataTrigger>
+                    <!--<Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="MethodText" Property="Foreground" Value="White" />
+                        <Setter TargetName="PaymentMethodItemBorder" Property="Background" Value="{StaticResource MainColor}"/>
+                    </Trigger>-->
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Label.Template>
+    </Label>
+
+</UserControl>

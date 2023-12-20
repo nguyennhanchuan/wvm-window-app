@@ -1,0 +1,46 @@
+﻿<Window x:Class="VendingMachine.Resources.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:VendingMachine.ViewModels"
+        xmlns:local="clr-namespace:VendingMachine.Resources.Views"
+        xmlns:uc="clr-namespace:VendingMachine.Resources.Control"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="1020" 
+        Width="1080"
+        Background="Transparent"
+        ResizeMode="CanResizeWithGrip"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        xmlns:c="clr-namespace:VendingMachine.Converters"
+        d:DataContext="{d:DesignInstance vm:MainViewModel}"
+        >
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <c:LayoutTypeConverter x:Key="LayoutTypeConverter" />
+        <SolidColorBrush x:Key="IndicatorForeground" Color="#2FC4B2" />
+        <SolidColorBrush x:Key="IndicatorBackground" Color="WhiteSmoke" />
+    </Window.Resources>
+
+
+    <Grid>
+        <Border Background="#F7FFFC"
+                BorderBrush="#F7FFFC"
+                CornerRadius="15" Grid.RowSpan="2" />
+
+        <ContentControl Grid.Row="0" x:Name="MainContent" Content="{Binding Path=CurrentViewModel, Mode=TwoWay}" Visibility="Visible" Grid.RowSpan="2" >
+            <ContentControl.Style>
+
+                <Style TargetType="ContentControl">
+                    <Setter Property="ContentTemplate" 
+                            Value="{Binding CurrentScreen, Converter={StaticResource LayoutTypeConverter}}"/>
+                </Style>
+
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</Window>

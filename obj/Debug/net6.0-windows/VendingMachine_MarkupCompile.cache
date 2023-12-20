@@ -1,0 +1,33 @@
+﻿VendingMachine
+
+
+winexe
+C#
+.cs
+<<<<<<< HEAD
+E:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\obj\Debug\net6.0-windows\
+=======
+D:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\obj\Debug\net6.0-windows\
+>>>>>>> origin/main
+VendingMachine
+none
+false
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+<<<<<<< HEAD
+E:\razor\Desktop\workspace\microasia\wvm-window-app\VendingMachine\App.xaml
+16-1767612651
+
+791960272293
+2052109562382
+Control\CartItem.xaml;Control\Product.xaml;Control\ProductType.xaml;Resources\Brushes\Brushes.xaml;Resources\Converters\Converters.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Resources\Icons\Icons.xaml;Resources\Styles\ButtonStyles.xaml;Resources\Templates\AddResourceViewModelTemplate.xaml;Resources\Templates\DiagnosticsViewModelTemplate.xaml;Resources\Templates\ExceptionViewModelTemplate.xaml;Resources\Templates\MainViewModelTemplate.xaml;Resources\Templates\ModifyResourceViewModelTemplate.xaml;Resources\Views\MainWindow.xaml;Views\MainWindow.xaml;
+=======
+D:\Freelance\WaterVendingMachine\wvm-window-app\VendingMachine\App.xaml
+4668634357
+
+7-1187834085
+198513437228
+MainWindow.xaml;View\CartItem.xaml;View\Product.xaml;View\ProductType.xaml;
+>>>>>>> origin/main
+
+True
+

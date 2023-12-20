@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.CartItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d"              
+             xmlns:cv="clr-namespace:VendingMachine.Converters"
+             x:Name="ucCartItem">
+
+    <UserControl.Resources>
+        <cv:CurrencyConverter x:Key="CurrencyToString"></cv:CurrencyConverter>
+    </UserControl.Resources>
+
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.1" Direction="300" />
+        </Border.Effect>
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="Width" Value="410"/>
+                <Setter Property="Height" Value="100"/>
+                <Setter Property="Margin" Value="10 20 0 10"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <!--// Item Image //-->
+            <Ellipse Width="80" Height="80" Margin="10"  VerticalAlignment="Center" HorizontalAlignment="Center" Stroke="{StaticResource MainColor}">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding ElementName=ucCartItem, Path=ItemImage}" Stretch="Uniform">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                <TranslateTransform X="0" Y="0.5"/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                        </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <!--// Info Cart//-->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding ElementName=ucCartItem, Path=ItemName}" Foreground="Black" FontSize="20" FontWeight="SemiBold"/>
+                <TextBlock Text="{Binding ElementName=ucCartItem, Path=ItemQuantity, StringFormat= 'Số lượng: \{0\}'}" Foreground="#a49fb9" FontSize="20" Margin="0 2" FontWeight="SemiBold"/>
+                <TextBlock Text="{Binding ElementName=ucCartItem, Path=ItemPrice, Converter={StaticResource CurrencyToString}}" Foreground="Black" FontSize="20" FontWeight="SemiBold"/>
+            </StackPanel>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="IncreaseButton" 
+                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.AddProductCommand}"
+                        CommandParameter="{Binding ElementName=ucCartItem,Path=ItemId}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="IncreaseButtonBorder">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0 10 0 0"/>
+                                        <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                                    </Style>
+                                </Border.Style>
+                                <Icon:PackIconMaterial Grid.Row="0" Kind="Plus" HorizontalAlignment="Center"  VerticalAlignment="Center"  Width="30" Height="30" Foreground="#FFFFFF"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="IncreaseButtonBorder" Property="Background" Value="{StaticResource ActiveColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="DecreaseButton" Grid.Row="1"
+                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.RemoveProductCommand}" 
+                        CommandParameter="{Binding ElementName=ucCartItem, Path=ItemId}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0" />
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="DecreaseButtonBorder">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0 0 10 0"/>
+                                        <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                                    </Style>
+                                </Border.Style>
+                                <Icon:PackIconMaterial Grid.Row="0" Kind="Minus" HorizontalAlignment="Center"  VerticalAlignment="Center"  Width="30" Height="30" Foreground="#FFFFFF"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="DecreaseButtonBorder" Property="Background" Value="{StaticResource ActiveColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+        </Grid>
+    </Border>
+</UserControl>

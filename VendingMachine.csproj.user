@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Control\CartTab.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\CastPayment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\ErrorAlert.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\FloatingCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\Loading.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\OrderDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\OrderDetailItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\PaymentDrag.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\PaymentMethodItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\PaymentMethodItemHorizontal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\PaymentMethodSelect.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\Product.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\CartItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\ProductType.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\QRPayment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Control\SuccessAlert.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Views\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Resources\Views\MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Resources\Control\CartTab.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\CastPayment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\ErrorAlert.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\FloatingCard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\Loading.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\OrderDetail.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\OrderDetailItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\PaymentDrag.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\PaymentMethodItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\PaymentMethodItemHorizontal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\PaymentMethodSelect.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\QRPayment.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\FailAlert.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\SuccessAlert.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Views\LoginTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Views\DataTemplates.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\Product.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\CartItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Control\ProductType.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Views\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

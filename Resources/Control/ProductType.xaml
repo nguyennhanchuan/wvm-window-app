@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.ProductType"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             mc:Ignorable="d" 
+             Name="ucProductType"
+             >
+
+    <Label x:Name="ProductTypeButton" Background="Transparent" Height="65">
+        <Label.Template>
+            <ControlTemplate TargetType="Label">
+
+                <Border x:Name="BorderTemplate">
+              
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="2" Opacity="0.3" Direction="300"  />
+                    </Border.Effect>
+
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="CornerRadius" Value="30"/>
+                            <Setter Property="Padding" Value="2"/>
+                            <Setter Property="Height" Value="60" />
+                            <Setter Property="Margin" Value="0 0 10 0" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        </Style>
+                    </Border.Style>
+
+                    <Grid Height="60" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.65*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--// Image //-->
+                        <Ellipse Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left" Margin="2.5 0 0 0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="#FFFFFF" Offset="0" />
+                                    <GradientStop Color="#FFFFFF" Offset="1" />
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <Ellipse Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left" Margin="5 0 0 0">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ElementName=ucProductType, Path=Image}"  Stretch="Uniform">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="{Binding ElementName=ucProductType, Path=ZoomFactorX}" ScaleY="{Binding ElementName=ucProductType, Path=ZoomFactorY}"/>
+                                            <TranslateTransform X="{Binding ElementName=ucProductType, Path=XTranslate}" Y="{Binding ElementName=ucProductType, Path=YTranslate}"/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <!--// Title //-->
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="{Binding ElementName=ucProductType, Path=Title}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="PaymentTypeTxtBl" Margin="5 0 20 0"/>
+                    </Grid>
+                </Border>
+                
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="PaymentTypeTxtBl" Property="Foreground" Value="White" />
+                        <Setter TargetName="BorderTemplate" Property="Background" Value="{StaticResource MainColor}"/>
+                    </Trigger>
+                    <DataTrigger Binding="{Binding ElementName=ucProductType, Path=IsActive}" Value="True">
+                        <Setter TargetName="BorderTemplate" Property="Background" Value="{StaticResource MainColor}" />
+                        <Setter TargetName="PaymentTypeTxtBl" Property="Foreground" Value="White" />
+                    </DataTrigger>
+                </ControlTemplate.Triggers>
+                
+            </ControlTemplate>
+        </Label.Template>
+    </Label>
+
+
+</UserControl>

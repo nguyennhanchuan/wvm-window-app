@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.Product"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             xmlns:cv="clr-namespace:VendingMachine.Converters"
+             xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
+             mc:Ignorable="d" 
+             x:Name="UcProduct"
+             >
+
+    <UserControl.Resources>
+        <cv:CurrencyConverter x:Key="CurrencyToString"></cv:CurrencyConverter>
+        <ExponentialEase x:Key="ExpEase" EasingMode="EaseOut" Exponent="5" />
+    </UserControl.Resources>
+
+    <Label x:Name="ProductButton" Background="Transparent">
+        <!--tz:Transitionz.Opacity="{tz:OpacityParams From=0, To=1, Duration=1000, TransitionOn=Loaded}"
+            tz:Transitionz.Translate="{tz:TranslateParams From='-10,0', To='0,0', Duration=1000, TransitionOn=Loaded}">-->
+        <!--tz:Transitionz.LayoutScale="{tz:ScaleParams BeginTime=400, To='1,1', From='0.1,0.1', Duration=5000, Ease={StaticResource ExpEase}, TransitionOn=Loaded}"-->                                     
+           >
+        <Label.Template>
+            <ControlTemplate TargetType="Label">
+                <Border x:Name="ProductBorder" VerticalAlignment="Top" Margin="0 5 0 5">
+
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="CornerRadius" Value="25" />
+                            <Setter Property="Width" Value="190" />
+                            <Setter Property="Height" Value="250" />
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="10" ShadowDepth="5" Opacity="0.1" Direction="300" RenderingBias="Performance"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Border.Style>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6.5*"/>
+                            <RowDefinition Height="3.5*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Ellipse Grid.Row="0" Grid.RowSpan="2" Width="90" Height="30" Margin="20 130 30 0">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FFFFFF" Offset="1" />
+                                        <GradientStop Color="#5BC3B7" Offset="0" />
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding ElementName=UcProduct, Path=ProductImage}" Margin="20 30 30 10"/>
+                            
+                            <Border x:Name="QuantityBorder" Grid.Row="0">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=UcProduct, Path=ProductQuantity, Converter={x:Static cv:IsNullConverter.Instance}, ConverterParameter={x:Null}}" Value="False">
+                                                <Setter Property="Background" Value="#D9D9D9"/>
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                                <Setter Property="Width" Value="40"/>
+                                                <Setter Property="Height" Value="45"/>
+                                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                                <Setter Property="Margin" Value="0 10 10 0"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <TextBlock Text="{Binding ElementName=UcProduct, Path=ProductQuantity}" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding ElementName=UcProduct, Path=ProductName}" Foreground="Black" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" TextWrapping="Wrap" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Text="{Binding ElementName=UcProduct, Path=ProductPrice,  Converter={StaticResource CurrencyToString}}" Foreground="Black" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                            <!--<TextBlock Grid.Row="2" Foreground="Black" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                <Run Text="{Binding ElementName=UcProduct, Path=ProductRow}"></Run>
+                                <Run Text="x"></Run>
+                                <Run Text="{Binding ElementName=UcProduct, Path=ProductCol}"></Run>
+                            </TextBlock>-->
+
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+                <ControlTemplate.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=UcProduct, Path=IsActive}" Value="True">
+                        <Setter Property="Effect" TargetName="ProductBorder">
+                            <Setter.Value>
+                                <DropShadowEffect Color="#2FC4B2" BlurRadius="20" ShadowDepth="10" Opacity="0.5" Direction="320" RenderingBias="Performance"/>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="ProductBorder" Property="BorderBrush" Value="{StaticResource MainColor}"/>
+                        <Setter TargetName="ProductBorder" Property="BorderThickness" Value="2"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Label.Template>
+    </Label>
+
+
+</UserControl>

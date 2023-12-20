@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.SuccessAlert"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+              Height="1040" Width="1080"
+             x:Name="ucSuccessAlert">
+    
+    <Border Background="#00FFFFFF"  
+                Canvas.Left="0"
+                Canvas.Top="0"
+                Height="1040" Width="1080">
+        
+        <Border Height="500" Width="500">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="Padding" Value="20"/>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStop Offset="0.2" Color="#22AA98" />
+                                    <GradientStop Offset="0.4" Color="#26B3A1" />
+                                    <GradientStop Offset="0.99" Color="#55E6C1" />
+                                    <GradientStop Offset="0.99" Color="#2FC4B2" />
+                                    <GradientStop Offset="0.99" Color="#4ACCBC" />
+                                    <GradientStop Offset="0.99" Color="#6ED6C9" />
+                                    <GradientStop Offset="0.99" Color="#8ADED4" />
+                                    <GradientStop Offset="0.99" Color="#CAF0EB" />
+                                    <GradientStop Offset="0.99" Color="#5DD1C3" />
+                                    <GradientStop Offset="1" Color="#AEE8E1" />
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Style>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+
+                <!--<Icon:PackIconMaterial Kind="Close" Width="30" Height="30" Foreground="White" HorizontalAlignment="Right"/>-->
+                <Border>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="CornerRadius" Value="75"/>
+                            <Setter Property="Width" Value="150"/>
+                            <Setter Property="Height" Value="150"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </Border.Style>
+                    <Image Source="\Assets\Images\SuccessIcon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="100"/>
+                </Border>
+
+                <TextBlock Grid.Row="1" Text="Thanh toán thành công" FontSize="28" FontWeight="Bold" Foreground='White' HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <TextBlock Grid.Row="2" Text="Vui lòng chờ nhận sản phẩm" FontSize="28" FontWeight="Bold" Foreground='White' HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            </Grid>
+
+        </Border>
+     </Border>
+</UserControl>

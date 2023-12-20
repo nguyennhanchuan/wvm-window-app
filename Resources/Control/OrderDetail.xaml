@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.OrderDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             x:Name="ucOrderDetail"
+             mc:Ignorable="d" 
+             xmlns:cv="clr-namespace:VendingMachine.Converters"
+             Height="1040" Width="1080"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:vm="clr-namespace:VendingMachine.ViewModels"
+             xmlns:uc="clr-namespace:VendingMachine.Resources.Control"
+             d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=True}">
+
+
+    <UserControl.Resources>
+        <cv:ImageUriToBitmap x:Key="ImageUriToBitmap"/>
+        <cv:CurrencyConverter x:Key="CurrencyToString"></cv:CurrencyConverter>
+    </UserControl.Resources>
+
+
+    <Canvas>
+        <!--<Button Canvas.Left="0"
+                Canvas.Top="0"
+                Width="550"
+                Height="1040"
+                Background="Transparent"
+                BorderThickness="0"
+                Command="{Binding ToggleCartCommand}"
+                />-->
+        <Border Background="#00FFFFFF"  
+                Canvas.Left="0"
+                Canvas.Top="0"
+                Width="1080"
+                Height="1040">
+        </Border>
+        <Grid   Canvas.Left="0"
+                Canvas.Top="0"
+                Width="1080"
+                Height="1040" >
+            <StackPanel
+                Name="Container"
+                HorizontalAlignment="Center" 
+                Width="700"
+                VerticalAlignment="Center" >
+                <Border x:Name="SelectPaymentBoder" Width="700">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="CornerRadius" Value="25"/>
+                            <Setter Property="Width" Value="700"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.05" Direction="300" RenderingBias="Performance"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush EndPoint="0.5,0.9" StartPoint="0.5,0">
+                                        <GradientStop Color="#54e5c0" Offset="0.9"/>
+                                        <GradientStop Color="#FF0B4E45"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Border.Style>
+                    <Grid Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Thông tin hoàn tiền" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#FFFFFF"/>
+                        <TextBlock Grid.Row="1" Text="Danh sách sản phẩm" TextAlignment="Left" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#FFFFFF" Margin="40 0 0 0"/>
+                        <ScrollViewer MaxHeight="400" Grid.Row="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="VerticalOnly" HorizontalAlignment="Center">
+
+                            <ItemsControl
+                                    x:Name="ItemList"  
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                    ItemsSource="{Binding RefundProducts, Mode=OneWay}">
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel  FocusManager.IsFocusScope="True" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <uc:OrderDetailItem ItemId="{Binding Product.Id}" ItemImage="{Binding Product.ProductImage}" ItemName="{Binding Product.Name}" ItemQuantity="{Binding Quantity}" ItemPrice="{Binding Total}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                            </ItemsControl>
+                        </ScrollViewer>
+                        <TextBlock Grid.Row="3" Text="{Binding RefundOrder.RefundAmount, Converter={StaticResource CurrencyToString}, StringFormat='\{0\} sẽ được hoàn lại sau 3 - 5 ngày làm việc'}" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24" FontWeight="Bold" Foreground="#FFFFFF" Margin="45 0 45 0"/>
+                        <TextBlock Grid.Row="4" Text="Mọi thắc mắc xin liên hệ" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="24" FontWeight="Bold" Foreground="#FFFFFF" Margin="45 0 45 20"/>
+
+
+                        <!--<ItemsControl Grid.Row="4"
+                                  HorizontalAlignment="Center"
+                                    x:Name="PaymentTypeList"  
+                                    ItemsSource="{Binding PaymentMethods, Mode=OneWay}">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel  Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.SelectPaymentMedthodCommand}" 
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource NoHoverButton}">
+                                    <uc:PaymentMethodItemHorizontal DisplayName ="{Binding DisplayName}" Image="{Binding Thumbnail}" IsActive="{Binding IsSelected}"/>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>-->
+
+                        <!--<Button Grid.Row="5" x:Name="ConfirmPayment" Foreground="#FFFFFF" Background="Transparent" Margin=" 0 5 0 5"
+                                    Command="{Binding ProcessPaymentCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="ConfirmPaymentBorder">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="15"/>
+                                            <Setter Property="Background" Value="#FFFFFF"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Width" Value="245"/>
+                                            <Setter Property="Height" Value="50"/>
+                                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                                            <Setter Property="VerticalAlignment" Value="Center"/>
+                                            <Setter Property="Margin" Value="10,5,10,5"/>
+                                        </Style>
+                                    </Border.Style>
+
+                                    <TextBlock Text="Xác nhận" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource MainColor}"/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter TargetName="ConfirmPaymentBorder" Property="Background" Value="{StaticResource ActiveColor}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>-->
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+       
+    </Canvas>
+</UserControl>

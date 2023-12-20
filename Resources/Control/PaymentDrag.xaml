@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="VendingMachine.Resources.Control.PaymentDrag"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VendingMachine.Resources.Control"
+             mc:Ignorable="d" 
+             Name="ucPaymentDrag"
+             Height="90" Width="90">
+    <Border>
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="CornerRadius" Value="45"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="5" Opacity="0.1" Direction="300" RenderingBias="Performance"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Border.Style>
+
+        <Ellipse x:Name="EllipseDrag" Width="90" Height="90" HorizontalAlignment="Center">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="{Binding ElementName=ucPaymentDrag, Path=Image}">
+                    <!--<ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="{Binding ElementName=ucProductType, Path=ZoomFactorX}" ScaleY="{Binding ElementName=ucProductType, Path=ZoomFactorY}"/>
+                            <TranslateTransform X="{Binding ElementName=ucProductType, Path=XTranslate}" Y="{Binding ElementName=ucProductType, Path=YTranslate}"/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>-->
+                </ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+    </Border>
+</UserControl>

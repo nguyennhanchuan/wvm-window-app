@@ -1,0 +1,136 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:resourceDictionaries="clr-namespace:VendingMachine.Resources.ResourceDictionaries"
+                    xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:uc="clr-namespace:VendingMachine.Resources.Control"
+                    xmlns:vm="clr-namespace:VendingMachine.ViewModels"
+                    xmlns:c="clr-namespace:VendingMachine.Converters"
+                    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                    x:Name="Template">
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <resourceDictionaries:SharedResourceDictionary Source="../Brushes/Brushes.xaml" />
+        <resourceDictionaries:SharedResourceDictionary Source="../Styles/ButtonStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+
+    <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    <c:InvertBooleanToVisibilityConverter x:Key="InvertBoolToVis"/>
+
+    <!--#region Desktop layout-->
+    <DataTemplate x:Key="Login_layout" DataType="{x:Type vm:MainViewModel}">
+        <Border x:Name="LoginBorder">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Setter Property="BorderThickness" Value="5"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource MainColor}"/>
+                    <Setter Property="CornerRadius" Value="25"/>
+                    <Setter Property="Width" Value="430"/>
+                    <Setter Property="Height" Value="430"/>
+                    <Setter Property="Background" Value="#FFFFFF"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.05" Direction="300" RenderingBias="Performance"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Style>
+            <Grid Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="147*"/>
+                    <RowDefinition Height="85*"/>
+                    <RowDefinition Height="85*"/>
+                    <RowDefinition Height="85*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+
+                <Border x:Name="userInputBoder" CornerRadius="13" Background="#def9f2" Grid.Row="1"  Margin="20,0,20,0" Height="50"
+                                SnapsToDevicePixels="True">
+                    <Grid>
+                        <TextBlock Margin="25,0,20,0" Grid.Row="1" Text="Tài khoản" Height="40" FontSize="28"
+                   Foreground="LightSteelBlue" Visibility="{Binding ElementName=txtUserName, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" IsHitTestVisible="False"/>
+                        <TextBox x:Name="txtUserName" Text="{Binding UserName , Mode=TwoWay}" Height="40" Margin="20,0,20,0" Grid.Row="1" Width="Auto"  Background="Transparent" BorderBrush="Transparent" FontSize="28" BorderThickness="0"/>
+                    </Grid>
+                </Border>
+
+                <Border x:Name="passwordInputBoder" CornerRadius="13" Background="#def9f2" Grid.Row="2"  Margin="20,0,20,0" Height="50"
+                                SnapsToDevicePixels="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350*"/>
+                            <ColumnDefinition Width="40*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="25,5,20,5"  Text="Mật khẩu" FontSize="28" Grid.Column="0"
+                     Foreground="LightSteelBlue" Visibility="{Binding ElementName=txtPasswordText, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" IsHitTestVisible="False" Grid.ColumnSpan="2"/>
+                        <PasswordBox x:Name="txtPassword"  Background="Transparent" Margin="20,5,20,5" Grid.Column="0" Width="300" HorizontalAlignment="Left" BorderBrush="Transparent" FontSize="28" BorderThickness="0" Grid.ColumnSpan="2" Visibility="{Binding ShowPassword, Converter={StaticResource InvertBoolToVis}}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=PasswordBox}}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
+                        <TextBox x:Name="txtPasswordText" Text="{Binding Password , Mode=TwoWay}" Background="Transparent" Margin="20,5,20,5" Grid.Column="0" Width="300" HorizontalAlignment="Left" BorderBrush="Transparent" FontSize="28" BorderThickness="0" Visibility="{Binding ShowPassword, Converter={StaticResource BoolToVis}}" Grid.ColumnSpan="2">
+       
+                        </TextBox>
+                        <Button Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"  Width="40" Height="25" Command="{Binding TogglePasswordCommand}" CommandParameter="{Binding ElementName=txtPassword}"
+                                        Style="{StaticResource NoHoverButton}">
+                            <Grid>
+                                <Icon:PackIconMaterial  Kind="Eye" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"  Width="25" Height="25" Foreground="Black"  Visibility="{Binding ShowPassword, Converter={StaticResource InvertBoolToVis}}"/>
+                                <Icon:PackIconMaterial Kind="EyeOff" HorizontalAlignment="Center" Margin="0,0,5,0" VerticalAlignment="Center"  Width="25" Height="25" Foreground="Black" Visibility="{Binding ShowPassword, Converter={StaticResource BoolToVis}}"/>
+                            </Grid>
+                        </Button>
+
+
+                    </Grid>
+                </Border>
+                <Border x:Name="deviceInputBoder" CornerRadius="13" Background="#def9f2" Grid.Row="3"  Margin="20,0,20,0" Height="50"
+                                SnapsToDevicePixels="True">
+                    <Grid>
+                        <TextBlock Margin="25,0,20,0" Grid.Row="1" Text="Mã thiết bị" Height="40" FontSize="28"
+                   Foreground="LightSteelBlue" Visibility="{Binding ElementName=txtDeviceCode, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}" IsHitTestVisible="False"/>
+                        <TextBox x:Name="txtDeviceCode" Text="{Binding DeviceCode , Mode=TwoWay}" Height="40" Margin="20,0,20,0" Grid.Row="1" Width="Auto"  Background="Transparent" BorderBrush="Transparent" FontSize="28" BorderThickness="0"/>
+                    </Grid>
+                </Border>
+                <Button Grid.Row="4" x:Name="ConfirmPayment" Foreground="#FFFFFF" Background="Transparent"
+                                    Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=txtPassword}" Grid.RowSpan="2">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ConfirmPaymentBorder">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="{StaticResource MainColor}"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Width" Value="200"/>
+                                        <Setter Property="Height" Value="60"/>
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </Border.Style>
+
+                                <TextBlock Text="Đăng nhập" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter TargetName="ConfirmPaymentBorder" Property="Background" Value="{StaticResource ActiveColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Ellipse Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Stroke="{StaticResource MainColor}" StrokeThickness="4">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Assets/Images/Login.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+        </Border>
+
+    </DataTemplate>
+    <!--#endregion-->
+</ResourceDictionary>

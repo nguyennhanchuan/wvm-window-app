@@ -1,0 +1,20 @@
+﻿VendingMachine
+1.0.0.0
+
+winexe
+C#
+.cs
+F:\TEKCON SOLUTIONS CO.,LTD\Gitlab\Repos\wvm-window-app\VendingMachine\obj\Debug\net5.0-windows10.0.19041\
+VendingMachine
+none
+false
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+F:\TEKCON SOLUTIONS CO.,LTD\Gitlab\Repos\wvm-window-app\VendingMachine\App.xaml
+29-1976409010
+
+141-1728532462
+249442819221
+Resources\Brushes\Brushes.xaml;Resources\Control\CartItem.xaml;Resources\Control\CartTab.xaml;Resources\Control\CastPayment.xaml;Resources\Control\ErrorAlert.xaml;Resources\Control\FailAlert.xaml;Resources\Control\FloatingCard.xaml;Resources\Control\Loading.xaml;Resources\Control\OrderDetail.xaml;Resources\Control\OrderDetailItem.xaml;Resources\Control\PaymentDrag.xaml;Resources\Control\PaymentMethodItem.xaml;Resources\Control\PaymentMethodItemHorizontal.xaml;Resources\Control\PaymentMethodSelect.xaml;Resources\Control\Product.xaml;Resources\Control\ProductType.xaml;Resources\Control\QRPayment.xaml;Resources\Control\SuccessAlert.xaml;Resources\Converters\Converters.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;Resources\Icons\Icons.xaml;Resources\Styles\ButtonStyles.xaml;Resources\Styles\Styles.xaml;Resources\Views\DataTemplates.xaml;Resources\Views\Login.xaml;Resources\Views\LoginTemplate.xaml;Resources\Views\MainWindow.xaml;Themes\Generic.xaml;
+
+False
+
